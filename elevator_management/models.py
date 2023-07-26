@@ -1,11 +1,11 @@
 from django.db import models
 
-class ElevatorStatus(models.TextChoices):
-    MOVING = "moving"
-    STOPPED = "stopped"
-    IDLE = "idle"
-    MAINTENANCE = "maintenance"
+class ElevatorStatus(models.Model):
 
+    status = models.CharField(max_length=20)
+
+    def __str__(self) -> str:
+        return self.status
 
 class Direction(models.TextChoices):
     UP = "up"
@@ -23,7 +23,7 @@ class Elevator(models.Model):
     destination_floor = models.IntegerField(null=True,blank=True)
     """Destination of the elevator"""
 
-    status = models.CharField(max_length=50,choices=ElevatorStatus.choices,default=ElevatorStatus.MOVING)
+    status = models.ForeignKey(ElevatorStatus,on_delete=models.CASCADE)
     """Shows status of elevator"""
 
     direction = models.CharField(max_length=50,choices=Direction.choices,default=Direction.UP)
@@ -42,4 +42,4 @@ class Elevator(models.Model):
     """Maximum floor elevator goes"""
 
     def __str__(self) -> str:
-        return self.status
+        return self.direction
