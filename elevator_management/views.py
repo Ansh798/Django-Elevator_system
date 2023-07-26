@@ -17,7 +17,7 @@ class ElevatorViewset(viewsets.GenericViewSet,mixins.ListModelMixin):
     queryset = Elevator.objects.all()
     serializer_class = ElevatorSerializers
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['status']
+    filterset_fields = ['status','is_operational']
 
     def post(self,request):
         """
@@ -48,7 +48,16 @@ class ElevatorViewset(viewsets.GenericViewSet,mixins.ListModelMixin):
             'request_status': request_status
         }
         return response.Response(payload,status=status.HTTP_200_OK)
-        
+    
+    @action(methods=['GET'],detail=True)
+    def non_operational(self,request,pk):
+        try:
+            elevator= Elevator.objects.get(id=pk)
+            elevator.is_operational = False
+            elevator.save()
+            return response.Response("Elevator marked to non operational")
+        except Exception as e:
+            return response.Response({'error': 'Elevator with this id does not exists'}, status=status.HTTP_400_BAD_REQUEST)
 
 class ElevatorRetrieveViewset(viewsets.GenericViewSet,mixins.RetrieveModelMixin):
     """
