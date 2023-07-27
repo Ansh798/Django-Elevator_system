@@ -1,0 +1,32 @@
+[
+{
+    "model": "elevator_management.elevator",
+    "pk": 1,
+    "fields": {
+        "is_operational": true,
+        "current_floor": 1,
+        "destination_floor": null,
+        "status": 2,
+        "direction": "down",
+        "max_occupancy": 10,
+        "current_occupancy": 5,
+        "min_floor": -2,
+        "max_floor": 10
+    }
+},
+{
+    "model": "elevator_management.elevator",
+    "pk": 2,
+    "fields": {
+        "is_operational": true,
+        "current_floor": 4,
+        "destination_floor": 8,
+        "status": 2,
+        "direction": "up",
+        "max_occupancy": 10,
+        "current_occupancy": 5,
+        "min_floor": -2,
+        "max_floor": 10
+    }
+}
+]
