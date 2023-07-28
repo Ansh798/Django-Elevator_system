@@ -2,7 +2,7 @@
  echo Installing dependencies
  pip3 install -r requirements.txt
  # To rename app
- #python3 manage.py rename_app base renewbuy
+ #python3 manage.py rename_app base 
  
  # Migrate
  echo Creating Migration files.
