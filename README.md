@@ -1,8 +1,6 @@
 # Elevator Management
 An elevator system, which can be initialised with N elevators and maintains the elevator states as well. 
 
-To check out the video of this project running [click here](/video/elevator_demo.mp4)
-
 ## Prerequisites
 
 1. Clone this project [Click here](https://github.com/Sagarkkr/elevator-system) 
